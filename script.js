@@ -1,38 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Reference to the pill bottle container
     const pillBottle = document.querySelector('.pill-bottle');
-    // Reference to the button that will start the animation
+    const lid = document.querySelector('.lid');
     const startButton = document.getElementById('startAnimation');
 
-    // Function to create and animate a pill
     function createPill() {
         const pill = document.createElement('div');
         pill.classList.add('pill');
-        // Randomly choose the pill color
         const pillColor = Math.random() > 0.5 ? 'red' : 'blue';
         pill.style.backgroundColor = pillColor;
-        // Randomly set the starting left position within the pill bottle
         pill.style.left = Math.random() * (pillBottle.offsetWidth - 20) + 'px';
+        pill.style.animation = `fall ${Math.random() * 2 + 2}s linear forwards`;
         pillBottle.appendChild(pill);
-
-        // Apply the animation to the pill
-        pill.style.animation = 'fall 2s linear forwards';
-
-        // Remove the pill from the DOM when its animation ends
-        pill.addEventListener('animationend', function () {
-            pill.remove();
-        });
     }
 
-    // Function to start the pill animation
     function startPillAnimation() {
-        setInterval(createPill, 1000); // Adjust the interval as necessary
+        lid.style.animation = 'popLid 2s ease forwards';
+        setTimeout(() => {
+            setInterval(createPill, 200);
+        }, 2100); // Slightly after lid animation to ensure it pops off first
     }
 
-    // Add an event listener to the button to start the animation on click
-    startButton.addEventListener('click', function() {
+    startButton.addEventListener('click', function () {
+        this.remove(); // Remove button to prevent re-triggering
         startPillAnimation();
-        // Optionally hide the start button to prevent re-clicks
-        this.style.display = 'none';
     });
 });

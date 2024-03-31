@@ -1,0 +1,48 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header, footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.pill-bottle {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 50px;
+    height: 100px;
+    background: #795548; /* A more bottle-like color */
+    overflow: hidden;
+}
+
+.pill {
+    position: absolute;
+    bottom: 100%; /* Start off-screen */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: fall 2s linear forwards;
+}
+
+@keyframes fall {
+    to {
+        bottom: 0;
+    }
+}

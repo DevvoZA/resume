@@ -26,23 +26,21 @@ section {
     position: fixed;
     right: 20px;
     top: 20px;
-    width: 50px;
-    height: 100px;
-    background: #795548; /* A more bottle-like color */
+    width: 60px; /* Adjusted for visibility */
+    height: 150px; /* Adjusted for visibility */
+    background: #795548; /* Simplified bottle color */
     overflow: hidden;
 }
 
 .pill {
-    position: absolute;
-    bottom: 100%; /* Start off-screen */
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    animation: fall 2s linear forwards;
+    position: absolute;
+    bottom: 100%; /* Start from the bottom of the bottle */
 }
 
 @keyframes fall {
-    to {
-        bottom: 0;
-    }
+    0% { bottom: 100%; }
+    100% { bottom: -40px; } /* Ensure it falls out of the bottle */
 }

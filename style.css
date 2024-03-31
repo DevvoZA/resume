@@ -26,21 +26,38 @@ section {
     position: fixed;
     right: 20px;
     top: 20px;
-    width: 60px; /* Adjusted for visibility */
-    height: 150px; /* Adjusted for visibility */
-    background: #795548; /* Simplified bottle color */
+    width: 60px;
+    height: 120px;
+    background-color: #ccc;
+    border-radius: 10px 10px 0 0;
     overflow: hidden;
 }
 
+.lid {
+    position: absolute;
+    top: -30px;
+    width: 60px;
+    height: 30px;
+    background-color: #666;
+    border-radius: 50% 50% 0 0;
+}
+
 .pill {
+    position: absolute;
+    bottom: 100%;
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    position: absolute;
-    bottom: 100%; /* Start from the bottom of the bottle */
+}
+
+@keyframes popLid {
+    0% { top: -30px; }
+    50% { top: -60px; }
+    100% { top: -30px; }
 }
 
 @keyframes fall {
-    0% { bottom: 100%; }
-    100% { bottom: -40px; } /* Ensure it falls out of the bottle */
+    0% { top: -20px; opacity: 1; transform: rotate(0deg); }
+    90% { opacity: 1; }
+    100% { top: 100vh; opacity: 0; transform: rotate(360deg); }
 }

@@ -4,18 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
     function createPill() {
         const pill = document.createElement('div');
         pill.classList.add('pill');
-        // Randomly choose the pill color
+        // Randomly choose the pill color and set a random starting position
         const pillColor = Math.random() > 0.5 ? 'red' : 'blue';
+        const startPos = Math.floor(Math.random() * (pillBottle.offsetWidth - 20)); // Ensure pills start within the bottle
         pill.style.backgroundColor = pillColor;
-        // Randomly set the starting left position
-        pill.style.left = Math.random() * (pillBottle.offsetWidth - 20) + 'px'; // Adjust for pill width
+        pill.style.left = startPos + 'px';
         pillBottle.appendChild(pill);
 
-        // Animation end event to remove the pill from the DOM
+        // Add animation dynamically to ensure it plays on creation
+        pill.style.animation = 'fall 2s linear forwards';
+
         pill.addEventListener('animationend', function() {
-            pill.remove();
+            pill.remove(); // Clean up by removing pill after animation ends
         });
     }
 
-    // Function to start dropping pills at intervals
-    function startPill
+    function startPillAnimation() {
+        setInterval(createPill, 1000); // Adjust as needed for timing
+    }
+
+    startPillAnimation();
+});
